@@ -65,6 +65,3 @@ Assets/WebGLTemplates*
 
 # my build destination
 WebGL
-
-# build destination for GitHub Pages
-docs
