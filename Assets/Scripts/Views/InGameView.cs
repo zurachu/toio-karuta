@@ -8,7 +8,7 @@ using toio.Simulator;
 
 public class InGameView : MonoBehaviour
 {
-    [SerializeField] private List<Text> scoreTexts;
+    [SerializeField] private List<KarutaPlayerIndicator> KarutaPlayerIndicators;
     [SerializeField] private Text releaseFromCardText;
     [SerializeField] private Text readyText;
     [SerializeField] private Text targetText;
@@ -38,6 +38,7 @@ public class InGameView : MonoBehaviour
         UIUtility.TrySetActive(releaseFromCardText, false);
         UIUtility.TrySetActive(readyText, false);
         UIUtility.TrySetActive(targetText, false);
+        UpdateView(karutaPlayers);
 
         if (karutaPlayers.Any(_player => _player.SimpleCardType.HasValue))
         {
@@ -71,6 +72,7 @@ public class InGameView : MonoBehaviour
         if (!currentTargetSimpleCardType.HasValue || currentTargetSimpleCardType.Value != simpleCardType)
         {
             karutaPlayer.IsPenalty = true;
+            UpdateView(karutaPlayers);
             if (karutaPlayers.TrueForAll(_player => _player.IsPenalty))
             {
                 ResetPenalties(1000);
@@ -93,14 +95,17 @@ public class InGameView : MonoBehaviour
         }
 
         karutaPlayers.ForEach(_player => _player.IsPenalty = false);
+        UpdateView(karutaPlayers);
     }
 
     private void UpdateView(List<KarutaPlayer> karutaPlayers)
     {
         foreach (var (player, index) in karutaPlayers.WithIndex())
         {
-            ListUtility.TryGetValue(scoreTexts, index, out var scoreText);
-            UIUtility.TrySetText(scoreText, $"{player.Score}");
+            if (ListUtility.TryGetValue(KarutaPlayerIndicators, index, out var indicator))
+            {
+                indicator.UpdateView(player);
+            }
         }
     }
 }
