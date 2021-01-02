@@ -3,7 +3,7 @@
 ## WebGL sample (must have toio cube)
 https://zurachu.github.io/toio-karuta/
 
-## requirements
+## requirements 
 ### toio SDK for Unity
 https://github.com/morikatron/toio-sdk-for-unity
 
