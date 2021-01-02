@@ -8,8 +8,6 @@ public class ToioCubePlayerIndicator : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Text text;
 
-    public Color Color => color;
-
     private void Start()
     {
         UIUtility.TrySetColor(image, color);
@@ -17,7 +15,7 @@ public class ToioCubePlayerIndicator : MonoBehaviour
 
     public void UpdateView(Cube cube, int index)
     {
-        UIUtility.TrySetText(text, $"Player {index + 1}");
+        UIUtility.TrySetText(text, $"プレイヤー{index + 1}");
         cube.TurnLedOn(ColorIntValue(color.r), ColorIntValue(color.g), ColorIntValue(color.b), 0);
     }
 
