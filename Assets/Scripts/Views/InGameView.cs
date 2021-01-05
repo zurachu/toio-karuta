@@ -33,7 +33,7 @@ public class InGameView : MonoBehaviour
         }
     }
 
-    private async Task DoOneGame(int index)
+    private async UniTask DoOneGame(int index)
     {
         isWithinGame = false;
         UIUtility.TrySetActive(releaseFromCardText, false);
@@ -41,16 +41,10 @@ public class InGameView : MonoBehaviour
         UIUtility.TrySetActive(targetImage, false);
         UpdateView(karutaPlayers);
 
-        if (karutaPlayers.Any(_player => _player.SimpleCardType.HasValue))
-        {
-            UIUtility.TrySetActive(releaseFromCardText, true);
-            await UniTask.WaitWhile(() => karutaPlayers.Any(_player => _player.SimpleCardType.HasValue));
-            UIUtility.TrySetActive(releaseFromCardText, false);
-        }
+        await ResetPenalties();
 
         isWithinGame = true;
         UIUtility.TrySetActive(readyText, true);
-        ResetPenalties();
 
         await UniTask.Delay(Random.Range(2000, 4000));
 
@@ -82,7 +76,7 @@ public class InGameView : MonoBehaviour
             UpdateView(karutaPlayers);
             if (karutaPlayers.TrueForAll(_player => _player.IsPenalty))
             {
-                ResetPenalties(1000);
+                _ = ResetPenalties(1000);
             }
 
             return;
@@ -94,11 +88,18 @@ public class InGameView : MonoBehaviour
         currentTargetSimpleCardType = null;
     }
 
-    private async void ResetPenalties(int milliSecond = 0)
+    private async UniTask ResetPenalties(int milliSecond = 0)
     {
         if (milliSecond > 0)
         {
             await UniTask.Delay(milliSecond);
+        }
+
+        if (karutaPlayers.Any(_player => _player.SimpleCardType.HasValue))
+        {
+            UIUtility.TrySetActive(releaseFromCardText, true);
+            await UniTask.WaitWhile(() => karutaPlayers.Any(_player => _player.SimpleCardType.HasValue));
+            UIUtility.TrySetActive(releaseFromCardText, false);
         }
 
         karutaPlayers.ForEach(_player => _player.IsPenalty = false);
