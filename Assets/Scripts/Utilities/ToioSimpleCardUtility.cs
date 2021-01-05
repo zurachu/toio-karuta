@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 using toio.Simulator;
 
 public static class ToioSimpleCardUtility
@@ -54,6 +55,11 @@ public static class ToioSimpleCardUtility
     public static string NameOf(StandardID.SimpleCardType simpleCardType)
     {
         return StandardID.SimpleCardNames[(int)simpleCardType];
+    }
+
+    public static Sprite SpriteOf(StandardID.SimpleCardType simpleCardType)
+    {
+        return (Sprite)Resources.Load<Sprite>($"StandardID/simple_card/{simpleCardType}");
     }
 
     public static bool IsAlphabet(uint simpleCardId)

@@ -6,6 +6,7 @@ using toio;
 public class TitleView : MonoBehaviour
 {
     [SerializeField] private List<ToioCubePlayerIndicator> toioCubePlayerIndicators;
+    [SerializeField] private Button connectButton;
     [SerializeField] private Button startButton;
 
     private void Start()
@@ -41,6 +42,7 @@ public class TitleView : MonoBehaviour
             indicator.UpdateView(cube, index);
         }
 
+        connectButton.interactable = cubeManager.cubes.Count < toioCubePlayerIndicators.Count;
         startButton.interactable = !ListUtility.IsNullOrEmpty(cubeManager.cubes);
     }
 }
