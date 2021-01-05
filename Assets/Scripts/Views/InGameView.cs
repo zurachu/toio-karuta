@@ -11,6 +11,7 @@ public class InGameView : MonoBehaviour
     [SerializeField] private List<KarutaPlayerIndicator> KarutaPlayerIndicators;
     [SerializeField] private Text releaseFromCardText;
     [SerializeField] private Text readyText;
+    [SerializeField] private Image targetImage;
     [SerializeField] private Text targetText;
 
     private List<KarutaPlayer> karutaPlayers;
@@ -37,7 +38,7 @@ public class InGameView : MonoBehaviour
         isWithinGame = false;
         UIUtility.TrySetActive(releaseFromCardText, false);
         UIUtility.TrySetActive(readyText, false);
-        UIUtility.TrySetActive(targetText, false);
+        UIUtility.TrySetActive(targetImage, false);
         UpdateView(karutaPlayers);
 
         if (karutaPlayers.Any(_player => _player.SimpleCardType.HasValue))
@@ -56,10 +57,16 @@ public class InGameView : MonoBehaviour
         currentTargetSimpleCardType = targetSimpleCardTypes[index];
         karutaPlayers.ForEach(_player => _player.OnDisplayedTarget());
         UIUtility.TrySetActive(readyText, false);
-        UIUtility.TrySetActive(targetText, true);
-        UIUtility.TrySetText(targetText, ToioSimpleCardUtility.NameOf(currentTargetSimpleCardType.Value));
+        ShowTarget(currentTargetSimpleCardType.Value);
         await UniTask.WaitWhile(() => isWithinGame);
         await UniTask.Delay(1000);
+    }
+
+    private void ShowTarget(StandardID.SimpleCardType simpleCardType)
+    {
+        UIUtility.TrySetActive(targetImage, true);
+        targetImage.sprite = ToioSimpleCardUtility.SpriteOf(simpleCardType);
+        UIUtility.TrySetText(targetText, ToioSimpleCardUtility.NameOf(simpleCardType));
     }
 
     private void OnTouchedSimpleCard(KarutaPlayer karutaPlayer, StandardID.SimpleCardType simpleCardType)
