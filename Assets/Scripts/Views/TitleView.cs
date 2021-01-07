@@ -8,6 +8,7 @@ public class TitleView : MonoBehaviour
     [SerializeField] private List<ToioCubePlayerIndicator> toioCubePlayerIndicators;
     [SerializeField] private Button connectButton;
     [SerializeField] private Button startButton;
+    [SerializeField] private LicenseView licenseViewPrefab;
 
     private void Start()
     {
@@ -25,6 +26,11 @@ public class TitleView : MonoBehaviour
         }
 
         UpdateView(cubeManager);
+    }
+
+    public void OnClickLicense()
+    {
+        Instantiate(licenseViewPrefab, transform.parent);
     }
 
     private void UpdateView(CubeManager cubeManager)
