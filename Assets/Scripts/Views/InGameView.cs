@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using toio.Simulator;
 
 public class InGameView : MonoBehaviour
 {
-    [SerializeField] private List<KarutaPlayerIndicator> KarutaPlayerIndicators;
+    [SerializeField] private List<KarutaPlayerIndicator> karutaPlayerIndicators;
     [SerializeField] private Text releaseFromCardText;
     [SerializeField] private Text readyText;
     [SerializeField] private Image targetImage;
@@ -18,6 +18,11 @@ public class InGameView : MonoBehaviour
     private List<StandardID.SimpleCardType> targetSimpleCardTypes;
     private StandardID.SimpleCardType? currentTargetSimpleCardType;
     private volatile bool isWithinGame;
+
+    private void Start()
+    {
+        releaseFromCardText.DOFade(0, 1).SetLoops(-1, LoopType.Yoyo);
+    }
 
     public async void StartGame()
     {
@@ -110,7 +115,7 @@ public class InGameView : MonoBehaviour
     {
         foreach (var (player, index) in karutaPlayers.WithIndex())
         {
-            if (ListUtility.TryGetValue(KarutaPlayerIndicators, index, out var indicator))
+            if (ListUtility.TryGetValue(karutaPlayerIndicators, index, out var indicator))
             {
                 indicator.UpdateView(player);
             }
