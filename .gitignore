@@ -63,5 +63,8 @@ Assets/ble-plugin-unity*
 Assets/toio-sdk*
 Assets/WebGLTemplates*
 
+# uGUI-Hypertext
+Assets/Hypertext*
+
 # my build destination
 WebGL
