@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
 public class KarutaPlayerIndicator : MonoBehaviour
 {
@@ -8,7 +10,30 @@ public class KarutaPlayerIndicator : MonoBehaviour
 
     public void UpdateView(KarutaPlayer player)
     {
-        UIUtility.TrySetText(scoreText, $"{player.Score}");
+        var newScoreText = $"{player.Score}";
+        if (scoreText.text != newScoreText)
+        {
+            StartScoreAnimation();
+        }
+
+        UIUtility.TrySetText(scoreText, newScoreText);
+
+        if (!penaltyObject.activeSelf && player.IsPenalty)
+        {
+            StartPenaltyAnimation();
+        }
+
         UIUtility.TrySetActive(penaltyObject, player.IsPenalty);
+    }
+
+    private async void StartScoreAnimation()
+    {
+        await scoreText.transform.DOScale(1.5f, 0.25f);
+        await scoreText.transform.DOScale(1f, 0.25f);
+    }
+
+    private async void StartPenaltyAnimation()
+    {
+        await penaltyObject.transform.DOScale(1f, 0.25f).From(3f);
     }
 }
