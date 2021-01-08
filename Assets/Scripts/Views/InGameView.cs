@@ -13,6 +13,7 @@ public class InGameView : MonoBehaviour
     [SerializeField] private Text readyText;
     [SerializeField] private Image targetImage;
     [SerializeField] private Text targetText;
+    [SerializeField] private Text remainingCountText;
 
     private List<KarutaPlayer> karutaPlayers;
     private List<StandardID.SimpleCardType> targetSimpleCardTypes;
@@ -34,7 +35,9 @@ public class InGameView : MonoBehaviour
 
         for (var endedGameCount = 0; endedGameCount < targetSimpleCardTypes.Count; endedGameCount++)
         {
+            UpdateRemainingCountText(endedGameCount);
             await DoOneGame(endedGameCount);
+            UpdateRemainingCountText(endedGameCount);
         }
     }
 
@@ -120,5 +123,10 @@ public class InGameView : MonoBehaviour
                 indicator.UpdateView(player);
             }
         }
+    }
+
+    private void UpdateRemainingCountText(int endedGameCount)
+    {
+        UIUtility.TrySetText(remainingCountText, $"{targetSimpleCardTypes.Count - endedGameCount}");
     }
 }
