@@ -43,16 +43,6 @@ public class KarutaPlayer
         cube.standardIdMissedCallback.AddListener(callbackKey, OnMissedStandardId);
     }
 
-    public void OnDisplayedTarget()
-    {
-        if (IsPenalty)
-        {
-            return;
-        }
-
-        cube.PlayPresetSound(ToioSoundUtility.PresetSoundId.Selected);
-    }
-
     public void IncrementScore()
     {
         Score++;

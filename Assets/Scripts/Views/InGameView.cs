@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using toio.Simulator;
+using KanKikuchi.AudioManager;
 
 public class InGameView : MonoBehaviour
 {
@@ -57,7 +58,6 @@ public class InGameView : MonoBehaviour
         await UniTask.Delay(Random.Range(2000, 4000));
 
         currentTargetSimpleCardType = targetSimpleCardTypes[index];
-        karutaPlayers.ForEach(_player => _player.OnDisplayedTarget());
         UIUtility.TrySetActive(readyText, false);
         ShowTarget(currentTargetSimpleCardType.Value);
         await UniTask.WaitWhile(() => isWithinGame);
@@ -68,7 +68,9 @@ public class InGameView : MonoBehaviour
     {
         UIUtility.TrySetActive(targetImage, true);
         targetImage.sprite = ToioSimpleCardUtility.SpriteOf(simpleCardType);
-        UIUtility.TrySetText(targetText, ToioSimpleCardUtility.NameOf(simpleCardType));
+        var simpleCardName = ToioSimpleCardUtility.NameOf(simpleCardType);
+        UIUtility.TrySetText(targetText, simpleCardName);
+        SEManager.Instance.Play($"SE/Voices/{simpleCardName.ToLower()}");
     }
 
     private void OnTouchedSimpleCard(KarutaPlayer karutaPlayer, StandardID.SimpleCardType simpleCardType)
