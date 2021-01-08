@@ -6,13 +6,18 @@ public class WindowEffectFunction : MonoBehaviour
 {
     public bool IsClosing { get; private set; }
 
-    private void Start()
+    public async UniTask Open()
     {
-        transform.DOScale(1, 0.25f).From(0);
+        await transform.DOScale(1, 0.25f).From(0);
     }
 
     public async UniTask Close()
     {
+        if (IsClosing)
+        {
+            return;
+        }
+
         IsClosing = true;
         await transform.DOScale(0, 0.25f);
     }

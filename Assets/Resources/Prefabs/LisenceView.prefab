@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   window: {fileID: 2271907168443556686}
+  scrollRect: {fileID: 8454375800675719413}
   text: {fileID: 6944412557808887035}
 --- !u!1 &8454375800675719415
 GameObject:
