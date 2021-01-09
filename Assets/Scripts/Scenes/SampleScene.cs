@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using KanKikuchi.AudioManager;
 
 public class SampleScene : MonoBehaviour
 {
@@ -32,5 +33,6 @@ public class SampleScene : MonoBehaviour
         UIUtility.TrySetActive(titleView, false);
         UIUtility.TrySetActive(inGameView, true);
         inGameView.StartGame();
+        SEManager.Instance.Play(SEPath.LARGE_TRANSITION);
     }
 }
