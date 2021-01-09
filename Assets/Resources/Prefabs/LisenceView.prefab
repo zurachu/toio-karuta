@@ -416,12 +416,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u25A0 toio SDK for Unity\n\nMIT License\n\nPermission is hereby granted,
-    free of charge, to any person obtaining a copy\nof this software and associated
-    documentation files (the \"Software\"), to deal\nin the Software without restriction,
-    including without limitation the rights\nto use, copy, modify, merge, publish,
-    distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons
-    to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe
+  m_Text: "\u300C\u3042\u307F\u305F\u308D\u306E\u58F0\u7D20\u6750\u5DE5\u623F\u300D\u306E\u58F0\u7D20\u6750\u3092\u4F7F\u7528\u3057\u307E\u3057\u305F\u3002\nhttp://www14.big.or.jp/~amiami/happy/\n\n\u25A0
+    toio SDK for Unity\n\nMIT License\n\nPermission is hereby granted, free of charge,
+    to any person obtaining a copy\nof this software and associated documentation
+    files (the \"Software\"), to deal\nin the Software without restriction, including
+    without limitation the rights\nto use, copy, modify, merge, publish, distribute,
+    sublicense, and/or sell\ncopies of the Software, and to permit persons to whom
+    the Software is\nfurnished to do so, subject to the following conditions:\n\nThe
     above copyright notice and this permission notice shall be included in all\ncopies
     or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\",
     WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED
@@ -670,7 +671,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8454375799793257989}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.054434415
+  m_Size: 0.053081304
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
