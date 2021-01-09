@@ -63,6 +63,13 @@ Assets/ble-plugin-unity*
 Assets/toio-sdk*
 Assets/WebGLTemplates*
 
+# AudioManager
+Assets/AudioManager_KanKikuchi/Editor*
+Assets/AudioManager_KanKikuchi/Resources/BGM/*
+Assets/AudioManager_KanKikuchi/Resources/SE/*
+Assets/AudioManager_KanKikuchi/Sample*
+Assets/AudioManager_KanKikuchi/Scripts*
+
 # uGUI-Hypertext
 Assets/Hypertext*
 

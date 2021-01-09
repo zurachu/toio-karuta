@@ -27,6 +27,21 @@ public class KarutaPlayer
     }
     private bool isPenalty;
 
+    public bool IsWin
+    {
+        get => isWin;
+        set
+        {
+            if (value)
+            {
+                cube.PlayPresetSound(ToioSoundUtility.PresetSoundId.Selected);
+            }
+
+            isWin = value;
+        }
+    }
+    private bool isWin;
+
     public int Score { get; private set; }
 
     private readonly Cube cube;
@@ -41,16 +56,6 @@ public class KarutaPlayer
         cube.standardIdCallback.AddListener(callbackKey, OnUpdateStandardId);
         cube.standardIdMissedCallback.RemoveListener(callbackKey);
         cube.standardIdMissedCallback.AddListener(callbackKey, OnMissedStandardId);
-    }
-
-    public void OnDisplayedTarget()
-    {
-        if (IsPenalty)
-        {
-            return;
-        }
-
-        cube.PlayPresetSound(ToioSoundUtility.PresetSoundId.Selected);
     }
 
     public void IncrementScore()

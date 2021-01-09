@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using toio;
+using KanKikuchi.AudioManager;
 
 public class TitleView : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class TitleView : MonoBehaviour
 
     public async void OnClickConnect()
     {
+        SEManager.Instance.Play(SEPath.SMALL_TRANSITION);
+
         var cubeManager = ToioCubeManagerService.Instance.CubeManager;
         var cube = await cubeManager.SingleConnect();
         if (cube == null)

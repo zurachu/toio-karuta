@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using toio.Simulator;
+using KanKikuchi.AudioManager;
 
 public class InGameView : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class InGameView : MonoBehaviour
     [SerializeField] private Text readyText;
     [SerializeField] private Image targetImage;
     [SerializeField] private Text targetText;
+    [SerializeField] private Text remainingCountText;
 
     private List<KarutaPlayer> karutaPlayers;
     private List<StandardID.SimpleCardType> targetSimpleCardTypes;
@@ -24,7 +27,7 @@ public class InGameView : MonoBehaviour
         releaseFromCardText.DOFade(0, 1).SetLoops(-1, LoopType.Yoyo);
     }
 
-    public async void StartGame()
+    public async void StartGame(Action completion)
     {
         var cubeManager = ToioCubeManagerService.Instance.CubeManager;
         karutaPlayers = cubeManager.cubes.ConvertAll(_cube => new KarutaPlayer(_cube, OnTouchedSimpleCard));
@@ -34,8 +37,15 @@ public class InGameView : MonoBehaviour
 
         for (var endedGameCount = 0; endedGameCount < targetSimpleCardTypes.Count; endedGameCount++)
         {
+            UpdateRemainingCountText(endedGameCount);
             await DoOneGame(endedGameCount);
+            UpdateRemainingCountText(endedGameCount);
         }
+
+        var highScore = karutaPlayers.ConvertAll(_player => _player.Score).Max();
+        karutaPlayers.ForEach(_player => _player.IsWin = _player.Score == highScore);
+        UpdateView(karutaPlayers);
+        completion?.Invoke();
     }
 
     private async UniTask DoOneGame(int index)
@@ -51,10 +61,9 @@ public class InGameView : MonoBehaviour
         isWithinGame = true;
         UIUtility.TrySetActive(readyText, true);
 
-        await UniTask.Delay(Random.Range(2000, 4000));
+        await UniTask.Delay(UnityEngine.Random.Range(2000, 4000));
 
         currentTargetSimpleCardType = targetSimpleCardTypes[index];
-        karutaPlayers.ForEach(_player => _player.OnDisplayedTarget());
         UIUtility.TrySetActive(readyText, false);
         ShowTarget(currentTargetSimpleCardType.Value);
         await UniTask.WaitWhile(() => isWithinGame);
@@ -65,7 +74,9 @@ public class InGameView : MonoBehaviour
     {
         UIUtility.TrySetActive(targetImage, true);
         targetImage.sprite = ToioSimpleCardUtility.SpriteOf(simpleCardType);
-        UIUtility.TrySetText(targetText, ToioSimpleCardUtility.NameOf(simpleCardType));
+        var simpleCardName = ToioSimpleCardUtility.NameOf(simpleCardType);
+        UIUtility.TrySetText(targetText, simpleCardName);
+        SEManager.Instance.Play($"SE/Voices/{simpleCardName.ToLower()}");
     }
 
     private void OnTouchedSimpleCard(KarutaPlayer karutaPlayer, StandardID.SimpleCardType simpleCardType)
@@ -120,5 +131,10 @@ public class InGameView : MonoBehaviour
                 indicator.UpdateView(player);
             }
         }
+    }
+
+    private void UpdateRemainingCountText(int endedGameCount)
+    {
+        UIUtility.TrySetText(remainingCountText, $"{targetSimpleCardTypes.Count - endedGameCount}");
     }
 }

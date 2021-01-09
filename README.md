@@ -11,5 +11,8 @@ https://github.com/morikatron/toio-sdk-for-unity
 
 UniTaskはPackage Managerにてセットアップ済みとなります。
 
+### AudioManager
+https://github.com/kankikuchi/AudioManager
+
 ### uGUI-Hypertext
 https://github.com/setchi/uGUI-Hypertext
