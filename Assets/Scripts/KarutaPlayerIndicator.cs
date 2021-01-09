@@ -7,6 +7,12 @@ public class KarutaPlayerIndicator : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
     [SerializeField] private GameObject penaltyObject;
+    [SerializeField] private GameObject winObject;
+
+    private void Start()
+    {
+        winObject.transform.DOScale(1.5f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+    }
 
     public void UpdateView(KarutaPlayer player)
     {
@@ -24,6 +30,7 @@ public class KarutaPlayerIndicator : MonoBehaviour
         }
 
         UIUtility.TrySetActive(penaltyObject, player.IsPenalty);
+        UIUtility.TrySetActive(winObject, player.IsWin);
     }
 
     private async void StartScoreAnimation()

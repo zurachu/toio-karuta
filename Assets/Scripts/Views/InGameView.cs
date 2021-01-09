@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +26,7 @@ public class InGameView : MonoBehaviour
         releaseFromCardText.DOFade(0, 1).SetLoops(-1, LoopType.Yoyo);
     }
 
-    public async void StartGame()
+    public async void StartGame(Action completion)
     {
         var cubeManager = ToioCubeManagerService.Instance.CubeManager;
         karutaPlayers = cubeManager.cubes.ConvertAll(_cube => new KarutaPlayer(_cube, OnTouchedSimpleCard));
@@ -39,6 +40,11 @@ public class InGameView : MonoBehaviour
             await DoOneGame(endedGameCount);
             UpdateRemainingCountText(endedGameCount);
         }
+
+        var highScore = karutaPlayers.ConvertAll(_player => _player.Score).Max();
+        karutaPlayers.ForEach(_player => _player.IsWin = _player.Score == highScore);
+        UpdateView(karutaPlayers);
+        completion?.Invoke();
     }
 
     private async UniTask DoOneGame(int index)
@@ -54,7 +60,7 @@ public class InGameView : MonoBehaviour
         isWithinGame = true;
         UIUtility.TrySetActive(readyText, true);
 
-        await UniTask.Delay(Random.Range(2000, 4000));
+        await UniTask.Delay(UnityEngine.Random.Range(2000, 4000));
 
         currentTargetSimpleCardType = targetSimpleCardTypes[index];
         karutaPlayers.ForEach(_player => _player.OnDisplayedTarget());
