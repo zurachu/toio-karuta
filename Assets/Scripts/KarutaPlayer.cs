@@ -27,6 +27,21 @@ public class KarutaPlayer
     }
     private bool isPenalty;
 
+    public bool IsWin
+    {
+        get => isWin;
+        set
+        {
+            if (value)
+            {
+                cube.PlayPresetSound(ToioSoundUtility.PresetSoundId.Selected);
+            }
+
+            isWin = value;
+        }
+    }
+    private bool isWin;
+
     public int Score { get; private set; }
 
     private readonly Cube cube;

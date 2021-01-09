@@ -8,6 +8,7 @@ public class SampleScene : MonoBehaviour
     [SerializeField] private CanvasScaler canvasScaler;
     [SerializeField] private TitleView titleView;
     [SerializeField] private InGameView inGameView;
+    [SerializeField] private GameObject finishView;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class SampleScene : MonoBehaviour
 
         UIUtility.TrySetActive(titleView, true);
         UIUtility.TrySetActive(inGameView, false);
+        UIUtility.TrySetActive(finishView, false);
     }
 
     private void Update()
@@ -32,7 +34,15 @@ public class SampleScene : MonoBehaviour
     {
         UIUtility.TrySetActive(titleView, false);
         UIUtility.TrySetActive(inGameView, true);
-        inGameView.StartGame();
+        UIUtility.TrySetActive(finishView, false);
+        inGameView.StartGame(FinishGame);
         SEManager.Instance.Play(SEPath.LARGE_TRANSITION);
+    }
+
+    private void FinishGame()
+    {
+        UIUtility.TrySetActive(titleView, false);
+        UIUtility.TrySetActive(inGameView, false);
+        UIUtility.TrySetActive(finishView, true);
     }
 }
