@@ -14,5 +14,16 @@ UniTaskはPackage Managerにてセットアップ済みとなります。
 ### AudioManager
 https://github.com/kankikuchi/AudioManager
 
+Assets/AudioManager_KanKikuchi/Resources/SE 以下に効果音ファイルを追加してください。
+
+#### must（無いとcompile error）
+- cancel
+- open_modal
+- small_transition
+- large_transition
+
+#### may（無くてもEditor実行可能）
+- Voices/a ~ z
+
 ### uGUI-Hypertext
 https://github.com/setchi/uGUI-Hypertext
