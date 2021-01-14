@@ -416,67 +416,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u25A0 toio SDK for Unity\n\nMIT License\n\nPermission is hereby granted,
-    free of charge, to any person obtaining a copy\nof this software and associated
-    documentation files (the \"Software\"), to deal\nin the Software without restriction,
-    including without limitation the rights\nto use, copy, modify, merge, publish,
-    distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons
-    to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe
-    above copyright notice and this permission notice shall be included in all\ncopies
-    or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\",
-    WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED
-    TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-    IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-    DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-    ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-    DEALINGS IN THE\nSOFTWARE.\n\n\u25A0 UniTask\n\nThe MIT License (MIT)\n\nCopyright
-    (c) 2019 Yoshifumi Kawai / Cysharp, Inc.\n\nPermission is hereby granted, free
-    of charge, to any person obtaining a copy\nof this software and associated documentation
-    files (the \"Software\"), to deal\nin the Software without restriction, including
-    without limitation the rights\nto use, copy, modify, merge, publish, distribute,
-    sublicense, and/or sell\ncopies of the Software, and to permit persons to whom
-    the Software is\nfurnished to do so, subject to the following conditions:\n\nThe
-    above copyright notice and this permission notice shall be included in all\ncopies
-    or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\",
-    WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED
-    TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-    IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-    DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-    ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-    DEALINGS IN THE\nSOFTWARE.\n\n\u25A0 AudioManager\n\nThe MIT License (MIT)\n\nCopyright
-    (c) 2019 Kan Kikuchi\n\nPermission is hereby granted, free of charge, to any
-    person obtaining a copy\nof this software and associated documentation files
-    (the \"Software\"), to deal\nin the Software without restriction, including without
-    limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell\ncopies of the Software, and to permit persons to whom the Software
-    is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright
-    notice and this permission notice shall be included in all\ncopies or substantial
-    portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY
-    OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-    OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-    NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
-    OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE\nSOFTWARE.\n\n\u25A0 uGUI-Hypertext\n\nThe MIT License (MIT)\n\nCopyright
-    (c) 2016 setchi\n\nPermission is hereby granted, free of charge, to any person
-    obtaining a copy\nof this software and associated documentation files (the \"Software\"),
-    to deal\nin the Software without restriction, including without limitation the
-    rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or
-    sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished
-    to do so, subject to the following conditions:\n\nThe above copyright notice
-    and this permission notice shall be included in all\ncopies or substantial portions
-    of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY
-    KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS
-    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS
-    OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER
-    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION
-    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n\u25A0 DOTween\n\nCopyright
-    (c) 2015 Daniele Giardini, Demigiant\n\nTo check out DOTween license, visit this
-    page: http://dotween.demigiant.com/license.php\n\nIn short:\n- You can freely
-    use DOTween in both commercial and non-commercial projects\n- You can redistribute
-    verbatim copies of the code, along with any readme files and attributions\n-
-    You can modify the code only for your own use and you cannot redistribute modified
-    versions (but you can send pull requests to me)"
+  m_Text: 
 --- !u!1 &8454375799793257988
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,8 +609,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8454375799793257986}
   m_HandleRect: {fileID: 8454375799793257989}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.054434415
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -687,7 +627,7 @@ GameObject:
   - component: {fileID: 8454375800490658404}
   - component: {fileID: 569686313397477551}
   m_Layer: 5
-  m_Name: LisenceView
+  m_Name: LicenseView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,6 +677,7 @@ MonoBehaviour:
   window: {fileID: 2271907168443556686}
   scrollRect: {fileID: 8454375800675719413}
   text: {fileID: 6944412557808887035}
+  textAsset: {fileID: 4900000, guid: 805d6c7c78c6e45febdf823a32ef86e2, type: 3}
 --- !u!1 &8454375800675719415
 GameObject:
   m_ObjectHideFlags: 0
