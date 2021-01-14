@@ -16,11 +16,6 @@ public class ToioCubePlayerIndicator : MonoBehaviour
     public void UpdateView(Cube cube, int index)
     {
         UIUtility.TrySetText(text, $"プレイヤー{index + 1}");
-        cube.TurnLedOn(ColorIntValue(color.r), ColorIntValue(color.g), ColorIntValue(color.b), 0);
-    }
-
-    private int ColorIntValue(float value)
-    {
-        return (int) Mathf.Clamp(value * 255, 0, 255);
+        ToioLedUtility.TurnLedOn(cube, color, 0);
     }
 }
