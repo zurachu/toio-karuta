@@ -73,5 +73,8 @@ Assets/AudioManager_KanKikuchi/Scripts*
 # uGUI-Hypertext
 Assets/Hypertext*
 
+# DOTweenPro
+Assets/Plugins/Demigiant*
+
 # my build destination
 WebGL

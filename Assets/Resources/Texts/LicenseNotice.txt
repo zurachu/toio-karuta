@@ -92,13 +92,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-■ DOTween
+■ DOTween Pro
 
-Copyright (c) 2015 Daniele Giardini, Demigiant
+Copyright (c) 2014 Daniele Giardini - Demigiant
 
-To check out DOTween license, visit this page: http://dotween.demigiant.com/license.php
+You may use DOTween Pro version (the "Software") in commercial and non-commercial applications created with Unity as long as every person working on the Unity project has a valid DOTween Pro license*.
+You may not distribute the Software nor portions of the Software inside Unity plugins unless authorized by the Software's copyright owner, in which case you will have to include this copyright notice along all copies of the Software and the original readme.txt file.
 
-In short:
-- You can freely use DOTween in both commercial and non-commercial projects
-- You can redistribute verbatim copies of the code, along with any readme files and attributions
-- You can modify the code only for your own use and you cannot redistribute modified versions (but you can send pull requests to me)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+* NOTE: the license has changed due to Unity's Asset Store rules: previously it allowed the use of DOTween as long as only one person per Unity project had one license. If you got DOTween Pro before June 2015 contact me and I'll deal with it
