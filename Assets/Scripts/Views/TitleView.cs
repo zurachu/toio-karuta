@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 using toio;
 using KanKikuchi.AudioManager;
 
 public class TitleView : MonoBehaviour
 {
-    [SerializeField] private RectTransform titleRectTransform;
     [SerializeField] private List<ToioCubePlayerIndicator> toioCubePlayerIndicators;
     [SerializeField] private Button connectButton;
     [SerializeField] private Button startButton;
@@ -17,8 +15,6 @@ public class TitleView : MonoBehaviour
     {
         var cubeManager = ToioCubeManagerService.Instance.CubeManager;
         UpdateView(cubeManager);
-
-        titleRectTransform.DOLocalMoveY(-10, 1).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo).SetRelative(true);
     }
 
     public async void OnClickConnect()
